@@ -6,6 +6,7 @@ import Login from './pages/Login.tsx';
 import Registration from './pages/Registration';
 import Profile from './pages/Profile';
 import NavBar from './components/NavBar';
+import '../src/styles/App.css'
 
 const App: React.FC = () => {
     return (

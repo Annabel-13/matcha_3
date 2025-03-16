@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Button from "../components/Button.tsx";
+import Input from "../components/Input.tsx";
 
 const Login: React.FC = () => {
     const [email, setEmail] = useState<string>('');
@@ -13,22 +15,22 @@ const Login: React.FC = () => {
 
         // Простая валидация
         if (!email || !password) {
-            setError('Пожалуйста, заполните все поля');
+            setError('Pls, fill all fields!');
             return;
         }
 
         // Здесь можно добавить вызов API для авторизации
-        console.log('Вход с:', email, password);
-        setSuccess('Вход выполнен успешно!');
+        console.log('Login with:', email, password);
+        setSuccess('Login was succeseed!');
     };
 
     return (
-        <div>
-            <h1>Вход</h1>
+        <div className="transparent-box">
+            <h1>Login</h1>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="email">Email:</label>
-                    <input
+                    <Input
                         type="email"
                         id="email"
                         value={email}
@@ -36,8 +38,8 @@ const Login: React.FC = () => {
                     />
                 </div>
                 <div>
-                    <label htmlFor="password">Пароль:</label>
-                    <input
+                    <label htmlFor="password">Password:</label>
+                    <Input
                         type="password"
                         id="password"
                         value={password}
@@ -46,7 +48,7 @@ const Login: React.FC = () => {
                 </div>
                 {error && <p style={{ color: 'red' }}>{error}</p>}
                 {success && <p style={{ color: 'green' }}>{success}</p>}
-                <button type="submit">Войти</button>
+                <Button type="submit">Login</Button>
             </form>
         </div>
     );

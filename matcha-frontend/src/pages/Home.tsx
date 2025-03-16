@@ -5,8 +5,8 @@ import React from 'react';
 const Home: React.FC = () => {
     return (
         <div>
-            <h1>Добро пожаловать в Matcha</h1>
-            <p>Найди свою идеальную пару в нашем приложении для знакомств.</p>
+            <h1>Welcome to Matcha</h1>
+            <p>Find your soulmate here!</p>
             {/* Пример использования компонента для изображений с дополнительным классом для домашней страницы */}
             {/*<CommonImage src={homeBg} alt="Home Background" customClass="home-image" />*/}
         </div>

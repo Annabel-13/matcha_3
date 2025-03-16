@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+import Button from "../components/Button.tsx";
+import Input from "../components/Input.tsx";
+import Select from "../components/Select.tsx";
+import TextArea from "../components/TextArea.tsx";
 
 interface RegistrationForm {
     username: string;
@@ -23,6 +27,8 @@ const Registration: React.FC = () => {
 
     const [errors, setErrors] = useState<Partial<RegistrationForm>>({});
     const [successMessage, setSuccessMessage] = useState('');
+    const [gender, setGender] = useState('');
+    const [sexualOrientation, setSexualOrientation] = useState('');
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
@@ -78,57 +84,69 @@ const Registration: React.FC = () => {
         }
     };
 
+    const genderOptions = [
+        { value: '', label: 'Select Gender' },
+        { value: 'male', label: 'Male' },
+        { value: 'female', label: 'Female' },
+        { value: 'non-binary', label: 'Non-Binary' },
+        // Add more options as needed
+    ];
+
+    const sexualOrientationOptions = [
+        { value: '', label: 'Select Sexual Orientation' },
+        { value: 'heterosexual', label: 'Heterosexual' },
+        { value: 'homosexual', label: 'Homosexual' },
+        { value: 'bisexual', label: 'Bisexual' },
+        // Add more options as needed
+    ];
+
     return (
-        <div>
+        <div className="transparent-box">
             <h2>Registration</h2>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="username">Username</label>
-                    <input type="text" id="username" name="username" value={formData.username} onChange={handleChange} />
+                    <Input type="text" id="username" name="username" value={formData.username} onChange={handleChange}/>
                     {errors.username && <span>{errors.username}</span>}
                 </div>
                 <div>
                     <label htmlFor="email">Email</label>
-                    <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} />
+                    <Input type="email" id="email" name="email" value={formData.email} onChange={handleChange}/>
                     {errors.email && <span>{errors.email}</span>}
                 </div>
                 <div>
                     <label htmlFor="password">Password</label>
-                    <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} />
+                    <Input type="password" id="password" name="password" value={formData.password}
+                           onChange={handleChange}/>
                     {errors.password && <span>{errors.password}</span>}
                 </div>
                 <div>
                     <label htmlFor="confirmPassword">Confirm Password</label>
-                    <input type="password" id="confirmPassword" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} />
+                    <Input type="password" id="confirmPassword" name="confirmPassword" value={formData.confirmPassword}
+                           onChange={handleChange}/>
                     {errors.confirmPassword && <span>{errors.confirmPassword}</span>}
                 </div>
-                <div>
-                    <label htmlFor="gender">Gender</label>
-                    <select id="gender" name="gender" value={formData.gender} onChange={handleChange}>
-                        <option value="">Select Gender</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="other">Other</option>
-                    </select>
-                    {errors.gender && <span>{errors.gender}</span>}
-                </div>
-                <div>
-                    <label htmlFor="sexualOrientation">Sexual Orientation</label>
-                    <select id="sexualOrientation" name="sexualOrientation" value={formData.sexualOrientation} onChange={handleChange}>
-                        <option value="">Select Orientation</option>
-                        <option value="heterosexual">Heterosexual</option>
-                        <option value="homosexual">Homosexual</option>
-                        <option value="bisexual">Bisexual</option>
-                        <option value="other">Other</option>
-                    </select>
-                    {errors.sexualOrientation && <span>{errors.sexualOrientation}</span>}
-                </div>
-                <div>
-                    <label htmlFor="interests">Interests</label>
-                    <textarea id="interests" name="interests" value={formData.interests} onChange={handleChange} />
+
+                <form className="">
+                    <Select
+                        label="Gender"
+                        options={genderOptions}
+                        value={gender}
+                        onChange={(e) => setGender(e.target.value)}
+                    />
+                    <Select
+                        label="Sexual Orientation"
+                        options={sexualOrientationOptions}
+                        value={sexualOrientation}
+                        onChange={(e) => setSexualOrientation(e.target.value)}
+                    />
+
+                </form>
+                <div className="">
+                    <TextArea label="Interests" id="interests" name="interests" value={formData.interests} onChange={handleChange}/>
                     {errors.interests && <span>{errors.interests}</span>}
                 </div>
-                <button type="submit">Register</button>
+                <Button type="submit">Register</Button>
                 {successMessage && <p>{successMessage}</p>}
             </form>
         </div>
