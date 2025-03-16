@@ -32,6 +32,10 @@
     color: 	rgb(56,56,56);
 }
 
+.navbar.dark-mode {
+    background-color: rgb(61, 49, 90);
+}
+
 .navbar .logout-btn {
     background-color: transparent;
     border: 1px solid #ffffff;
@@ -45,4 +49,15 @@
 .navbar .logout-btn:hover {
     background-color: #d3d3d3;
     color: #8B0000;
+}
+
+.toggle-btn {
+    border: 1px solid currentColor;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.toggle-btn:hover {
+    background-color: transparent;
 }

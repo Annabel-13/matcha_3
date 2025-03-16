@@ -1,5 +1,6 @@
 // src/App.tsx
-import React from 'react';
+// import React, {useState} from 'react';
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home.tsx';
 import Login from './pages/Login.tsx';
@@ -7,6 +8,8 @@ import Registration from './pages/Registration';
 import Profile from './pages/Profile';
 import NavBar from './components/NavBar';
 import '../src/styles/App.css'
+
+
 
 const App: React.FC = () => {
     return (

@@ -1,28 +1,55 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/NavBar.css'
+import classNames from "classnames";
+
 
 const NavBar: React.FC = () => {
+    const [isDarkMode, setIsDarkMode] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
+    // useEffect(() => {
+    //     const token = localStorage.getItem('authToken');
+    //     setIsLoggedIn(!!token);
+    // }, []);
     useEffect(() => {
+        // Check if the user is logged in
         const token = localStorage.getItem('authToken');
         setIsLoggedIn(!!token);
-    }, []);
+
+        // Toggle dark mode class based on isDarkMode
+        document.body.classList.toggle('dark-mode', isDarkMode);
+        const navbar = document.querySelector('.navbar');
+        if (navbar) {
+            navbar.classList.toggle('dark-mode', isDarkMode);
+        }
+    }, [isDarkMode]); // This effect depends on `isDarkMode` state
+
 
     const handleLogout = () => {
         localStorage.removeItem('authToken');
         setIsLoggedIn(false);
     };
 
+    const toggleDarkMode = () => {
+        setIsDarkMode(!isDarkMode);
+    };
+
+    const darkClass = classNames('navbar', {
+        'dark-mode': isDarkMode,
+        'light-mode': !isDarkMode,
+    });
+
     return (
-        <nav className="navbar">
+        <nav className={darkClass}>
             <ul>
                 <li><Link to="/">Home</Link></li>
                 {isLoggedIn ? (
                     <>
                         <li><Link to="/profile">Profile</Link></li>
-                        <li><button className="logout-btn" onClick={handleLogout}>Logout</button></li>
+                        <li>
+                            <button className="logout-btn" onClick={handleLogout}>Logout</button>
+                        </li>
                     </>
                 ) : (
                     <>
@@ -31,6 +58,9 @@ const NavBar: React.FC = () => {
                     </>
                 )}
             </ul>
+            <button onClick={toggleDarkMode} className="toggle-btn">
+                {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+            </button>
         </nav>
     );
 };
