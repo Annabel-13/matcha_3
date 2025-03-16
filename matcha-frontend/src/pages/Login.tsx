@@ -1,27 +1,39 @@
+
 import React, { useState } from 'react';
 import Button from "../components/Button.tsx";
 import Input from "../components/Input.tsx";
+import { useNavigate } from 'react-router-dom'; // React Router v6 hook for navigation
 
 const Login: React.FC = () => {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [error, setError] = useState<string>('');
     const [success, setSuccess] = useState<string>('');
+    const navigate = useNavigate(); // hook to navigate programmatically
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setError('');
         setSuccess('');
 
-        // Простая валидация
+        // Easy validation
         if (!email || !password) {
-            setError('Pls, fill all fields!');
+            setError('Please, fill in all fields!');
             return;
         }
 
-        // Здесь можно добавить вызов API для авторизации
-        console.log('Login with:', email, password);
-        setSuccess('Login was succeseed!');
+        // Simulate an API request for login
+        console.log('Logging in with:', email, password);
+
+        // Simulate successful login
+        const token = 'valid-token'; // Replace with actual token received from API
+        localStorage.setItem('authToken', token); // Store token in localStorage
+
+        // Set success message
+        setSuccess('Login was successful!');
+
+        // Redirect to Profile page after successful login
+        navigate('/profile');
     };
 
     return (
@@ -55,3 +67,4 @@ const Login: React.FC = () => {
 };
 
 export default Login;
+

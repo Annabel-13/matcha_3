@@ -1,4 +1,7 @@
+
+
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // React Router hook for navigation
 
 interface UserProfile {
     username: string;
@@ -8,35 +11,43 @@ interface UserProfile {
 
 const Profile: React.FC = () => {
     const [profile, setProfile] = useState<UserProfile | null>(null);
+    const navigate = useNavigate(); // hook to navigate programmatically
 
     useEffect(() => {
-        // Здесь можно сделать запрос к API для получения данных профиля.
-        // Пока используем мок-данные:
-        const mockProfile: UserProfile = {
-            username: 'JohnDoe',
-            email: 'john.doe@example.com',
-            bio: 'Люблю путешествовать и готовить вкусные блюда.',
-        };
-        // Симуляция задержки загрузки:
-        setTimeout(() => {
-            setProfile(mockProfile);
-        }, 500);
-    }, []);
+        // Check if authToken exists in localStorage
+        const token = localStorage.getItem('authToken');
+        if (!token) {
+            // If no token is found, redirect to login page
+            navigate('/');
+        } else {
+            // Simulate an API request to fetch profile data
+            const mockProfile: UserProfile = {
+                username: 'JohnDoe',
+                email: 'john.doe@example.com',
+                bio: 'Люблю путешествовать и готовить вкусные блюда.',
+            };
+
+            // Simulating a loading delay
+            setTimeout(() => {
+                setProfile(mockProfile);
+            }, 500);
+        }
+    }, [navigate]); // Add navigate as a dependency to avoid missing re-renders
 
     if (!profile) {
-        return <p>Загрузка профиля...</p>;
+        return <p>Loading profile...</p>; // Show loading message until profile data is available
     }
 
     return (
         <div>
-            <h1>Профиль пользователя</h1>
-            <p><strong>Имя:</strong> {profile.username}</p>
+            <h1>User Profile</h1>
+            <p><strong>Name:</strong> {profile.username}</p>
             <p><strong>Email:</strong> {profile.email}</p>
-            {profile.bio && <p><strong>О себе:</strong> {profile.bio}</p>}
-            {/* Можно добавить кнопку для редактирования профиля */}
-            <button>Редактировать профиль</button>
+            {profile.bio && <p><strong>About me:</strong> {profile.bio}</p>}
+            <button>Edit Profile</button>
         </div>
     );
 };
 
 export default Profile;
+
