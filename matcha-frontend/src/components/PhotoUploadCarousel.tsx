@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../styles/PhotoUploadCarousel.css";
+import CommonImage from "../components/CommonImage.tsx";
 
 const PhotoUploadCarousel: React.FC = () => {
     const [photos, setPhotos] = useState<string[]>([]);
@@ -33,7 +34,7 @@ const PhotoUploadCarousel: React.FC = () => {
         <div className="photo-upload-carousel">
             <div className="carousel-container">
                 {photos.length > 0 ? (
-                    <img src={photos[currentIndex]} alt="Uploaded Preview" className="carousel-photo"/>
+                    <CommonImage src={photos[currentIndex]} alt="Uploaded Preview" className="carousel-photo"/>
                 ) : (
                     <p>No photos uploaded</p>
                 )}

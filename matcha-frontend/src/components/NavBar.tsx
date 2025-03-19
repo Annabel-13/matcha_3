@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import {Link, useNavigate} from 'react-router-dom';
-import '../styles/NavBar.css'
+import '../styles/NavBar.css';
 import classNames from "classnames";
+
 
 
 
@@ -53,7 +54,7 @@ const NavBar: React.FC = () => {
                         {/*part of buttons which we see only in Profile mode*/}
                         <li><Link to="/profile">Profile</Link></li>
                         <li><Link onClick={() => navigate('/edit-profile')} to="/edit-profile">Edit Profile</Link></li>
-                        <li><Link to="/">Go Match!</Link></li>
+                        <li><Link to="/match">Go Match!</Link></li>
                         <li><Link onClick={handleLogout} to="/">Logout</Link></li>
                     </>
                 ) : (
