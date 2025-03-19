@@ -54,7 +54,7 @@
 import React, { useState, useEffect } from 'react';
 // import Button from '../components/Button.tsx';
 import '../styles/Profile.css';
-import CommonImage from "../components/CommonImage.tsx";
+import ProfileCarousel from "../components/Carousel.tsx";
 import {useNavigate} from "react-router-dom";
 
 interface UserProfile {
@@ -65,6 +65,15 @@ interface UserProfile {
 const Profile: React.FC = () => {
     const [profile, setProfile] = useState<UserProfile | null>(null);
     const navigate = useNavigate();
+
+    //photos
+    const images = [
+        '../src/assets/images/profile.png',
+        '../src/assets/images/profile.png',
+        '../src/assets/images/profile.png',
+        '../src/assets/images/profile.png',
+        '../src/assets/images/profile.png'
+    ];
 
     useEffect(() => {
         const token = localStorage.getItem('authToken');
@@ -88,13 +97,9 @@ const Profile: React.FC = () => {
 
     return (
         <div className="transparent-box">
-            {/*<h1 className="profile-heading">User Profile</h1>*/}
-            <h1 className="profile-detail"><strong>Name:</strong> {profile.username}</h1>
-            <CommonImage src="../src/assets/images/profile.png" alt="Profile" />
+            <h2 className="profile-detail"><strong>Name:</strong> {profile.username}</h2>
+            <ProfileCarousel images={images} />
             {profile.bio && <p className="profile-detail"><strong>About me:</strong> {profile.bio}</p>}
-            {/*<Button onClick={() => navigate('/edit-profile')} className="">*/}
-            {/*    Edit Profile*/}
-            {/*</Button>*/}
         </div>
     );
 };
