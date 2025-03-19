@@ -1,56 +1,3 @@
-//
-//
-// import React, { useState, useEffect } from 'react';
-// import { useNavigate } from 'react-router-dom'; // React Router hook for navigation
-//
-// interface UserProfile {
-//     username: string;
-//     email: string;
-//     bio?: string;
-// }
-//
-// const Profile: React.FC = () => {
-//     const [profile, setProfile] = useState<UserProfile | null>(null);
-//     const navigate = useNavigate(); // hook to navigate programmatically
-//
-//     useEffect(() => {
-//         // Check if authToken exists in localStorage
-//         const token = localStorage.getItem('authToken');
-//         if (!token) {
-//             // If no token is found, redirect to login page
-//             navigate('/');
-//         } else {
-//             // Simulate an API request to fetch profile data
-//             const mockProfile: UserProfile = {
-//                 username: 'JohnDoe',
-//                 email: 'john.doe@example.com',
-//                 bio: 'Люблю путешествовать и готовить вкусные блюда.',
-//             };
-//
-//             // Simulating a loading delay
-//             setTimeout(() => {
-//                 setProfile(mockProfile);
-//             }, 500);
-//         }
-//     }, [navigate]); // Add navigate as a dependency to avoid missing re-renders
-//
-//     if (!profile) {
-//         return <p>Loading profile...</p>; // Show loading message until profile data is available
-//     }
-//
-//     return (
-//         <div>
-//             <h1>User Profile</h1>
-//             <p><strong>Name:</strong> {profile.username}</p>
-//             <p><strong>Email:</strong> {profile.email}</p>
-//             {profile.bio && <p><strong>About me:</strong> {profile.bio}</p>}
-//             <button>Edit Profile</button>
-//         </div>
-//     );
-// };
-//
-// export default Profile;
-//
 import React, { useState, useEffect } from 'react';
 // import Button from '../components/Button.tsx';
 import '../styles/Profile.css';
@@ -60,6 +7,9 @@ import {useNavigate} from "react-router-dom";
 interface UserProfile {
     username: string;
     bio?: string;
+    gender?: string;
+    sexualPreferences?: string;
+    interests?: string[];
 }
 
 const Profile: React.FC = () => {
@@ -84,12 +34,20 @@ const Profile: React.FC = () => {
             const mockProfile: UserProfile = {
                 username: 'JohnDoe',
                 bio: 'Passionate about traveling and culinary arts.',
+                interests: ['#football', '#travel', '#cooking'],
             };
             setTimeout(() => {
                 setProfile(mockProfile);
             }, 500);
         }
     }, [navigate]);
+
+    const handleTagClick = (tag: string) => {
+        // Example action when a hashtag is clicked
+        console.log(`Hashtag clicked: ${tag}`);
+        // You can navigate to a page or filter content based on the clicked hashtag
+        // For example, navigate to a tag-specific page or filter the profile posts
+    };
 
     if (!profile) {
         return <p>Loading profile...</p>;
@@ -98,8 +56,26 @@ const Profile: React.FC = () => {
     return (
         <div className="transparent-box">
             <h2 className="profile-detail"><strong>Name:</strong> {profile.username}</h2>
-            <ProfileCarousel images={images} />
-            {profile.bio && <p className="profile-detail"><strong>About me:</strong> {profile.bio}</p>}
+            <ProfileCarousel images={images}/>
+            <h2>About me:</h2>
+            {profile.bio && <p className="profile-detail"> {profile.bio}</p>}
+            {/*hashtags part*/}
+            {profile.interests && (
+                <div>
+                    <h2>Interests:</h2>
+                    <p>
+                        {profile.interests.map((tag, index) => (
+                            <span
+                                key={index}
+                                className="tag_input"
+                                onClick={() => handleTagClick(tag)}
+                            >
+                                {tag}
+                            </span>
+                        ))}
+                    </p>
+                </div>
+            )}
         </div>
     );
 };

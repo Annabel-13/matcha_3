@@ -17,6 +17,14 @@
     margin-bottom: 12px;
 }
 
+.tag_input {
+    color: white;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
 /*.edit-button {*/
 /*    background-color: #3498db; !* Button background color *!*/
 /*    color: #fff; !* Button text color *!*/
