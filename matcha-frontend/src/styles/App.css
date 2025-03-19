@@ -7,10 +7,11 @@
 }
 
 .logo {
-  height: 6em;
-  padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
+  line-height: 0;
+  font-size: 2rem;
+  text-transform: uppercase;
 }
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
@@ -19,8 +20,19 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+.logo_container {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between logo and text */
+}
+
+.logo_container img {
+  width: 5%;
+  height: auto;
+}
+
 .transparent-box {
-  background: rgba(0,0,0,-0.5); /* почти прозрачный белый фон */
+  background: rgba(0,0,0,-0.5);
   padding: 2rem;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);

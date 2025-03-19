@@ -29,6 +29,7 @@
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease;
+    text-transform: uppercase;
 }
 
 .navbar a:hover {
@@ -59,6 +60,7 @@
     padding: 0.5rem 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
+    text-transform: uppercase;
 }
 
 .toggle-btn:hover {

@@ -41,6 +41,11 @@ const NavBar: React.FC = () => {
 
     return (
         <nav className={darkClass}>
+            <div className="logo_container">
+                <h1 className="logo">Matcha</h1>
+                <img alt={'logo'} src={'../src/assets/images/couple.png'}/>
+            </div>
+
             <ul>
                 <li><Link to="/">Home</Link></li>
                 {isLoggedIn ? (
