@@ -1,4 +1,4 @@
-# 🚀 My React Project
+# 🚀 Frontend for Matcha
 
 Welcome to frontend part of **Matcha**! This is a React-based application on Typescript for dating.
 
