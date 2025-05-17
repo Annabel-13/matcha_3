@@ -33,7 +33,7 @@ The project is in progress, so next steps will be:
 📊 Activity tracking
 
 Below part of our progress to this moment:
-![alt text](https://github.com/Annabel-13/hp_quiz/blob/master/screen2.png)
-![alt text](https://github.com/Annabel-13/hp_quiz/blob/master/screen2.png)
+![alt text](https://github.com/Annabel-13/matcha_3/blob/main/screenshots/screen1.png)
+![alt text](https://github.com/Annabel-13/matcha_3/blob/main/screenshots/screen2.png)
 
 
