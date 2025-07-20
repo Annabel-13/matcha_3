@@ -10,9 +10,9 @@ interface Person {
 }
 
 const mockPeople: Person[] = [
-    { id: 1, name: "Alice", age: 25, image: "../src/assets/images/profile.png" },
-    { id: 2, name: "Bob", age: 28, image: "../src/assets/images/profile.png" },
-    { id: 3, name: "Charlie", age: 30, image: "../src/assets/images/profile.png" }
+    { id: 1, name: "Alice", age: 25, image: "/assets/images/profile.png" },
+    { id: 2, name: "Bob", age: 28, image: "/assets/images/profile.png" },
+    { id: 3, name: "Charlie", age: 30, image: "/assets/images/profile.png" }
 ];
 
 const Match: React.FC = () => {
