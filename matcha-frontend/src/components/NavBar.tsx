@@ -44,7 +44,7 @@ const NavBar: React.FC = () => {
         <nav className={darkClass}>
             <div className="logo_container">
                 <h1 className="logo">Matcha</h1>
-                <img alt={'logo'} src={'../src/assets/images/couple.png'}/>
+                <img alt={'logo'} src={'/assets/images/couple.png'}/>
             </div>
 
             <ul>
