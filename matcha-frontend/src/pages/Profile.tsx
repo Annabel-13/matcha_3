@@ -18,11 +18,11 @@ const Profile: React.FC = () => {
 
     //photos
     const images = [
-        '../src/assets/images/profile.png',
-        '../src/assets/images/profile.png',
-        '../src/assets/images/profile.png',
-        '../src/assets/images/profile.png',
-        '../src/assets/images/profile.png'
+        '/assets/images/profile.png',
+        '/assets/images/profile.png',
+        '/assets/images/profile.png',
+        '/assets/images/profile.png',
+        '/assets/images/profile.png'
     ];
 
     useEffect(() => {
